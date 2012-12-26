@@ -5,10 +5,16 @@ my project euler answers
 
 todo:
 	question 1:
-		do a method using inclusion/exclusion of aritmetic sequences
+		do a version using inclusion/exclusion of aritmetic sequences
 		add support for command line arguments and multithreading
 
 	question 2:
 		consider non-brute force answers
 
-	
+	question 3:
+		consider non-brute force answers
+
+	question 4: 
+		figure out why it won't link when using -ansi and -Wall flags (gcc)
+
+
