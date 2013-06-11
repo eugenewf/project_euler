@@ -1,20 +1,13 @@
-project_euler
-=============
+This document has general notes on each problem.  For comments on specific implementations check the readme in the folder for the appropriate language. 
 
-my project euler answers
+p[1]: Find the sum of all the multiples of {factors} below [limit].
 
-todo:
-	question 1:
-		do a version using inclusion/exclusion of aritmetic sequences
-		add support for command line arguments and multithreading
+	There are two markedly different approaches to this problem when considering scalability.  
 
-	question 2:
-		consider non-brute force answers
+	The first is loosely based on the Sieve of Eratosthenes, creating an array the size of the limit, and iterating through said array to mark the multiples of each factor, then adding the values of the marked positions together.  This approach is easy to implement and lends itself well to multithreading. 
+	Memory Usage: O(limit)
+	Runtime: O( |factors| * limit )
 
-	question 3:
-		consider non-brute force answers
-
-	question 4: 
-		figure out why it won't link when using -ansi and -Wall flags (gcc)
-
-
+	The second approach relies on the fact that summation(c * i) for i =1..n where n = floor(limit/c) = c * n * (n+1) / 2.  The trouble is that when the number of factors increases this becomes analogous to an exercise in the inclusion-exclution principle based on the least common multiples of combinations of factors.  For instance, when you add the multiples of three and five, you've counted the multiples of fifteen twice.
+	Memory Usage: O(1)
+	Runtime: O(2^|factors|)

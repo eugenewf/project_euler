@@ -1,0 +1,36 @@
+/*least common multiple of all numbers less than 20*/
+
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+	int primes[20];
+	int i,j,power,product=1;
+
+	/*Sieve of Eratosthenes*/	
+	for(i=0;i<20;i++){
+		primes[i]=1;
+	}
+	for(i=2;i*i<20;i++){
+		if(primes[i]){
+			for(j=i*i;j<20;j+=i){
+				primes[j]=0;
+			}
+		}
+	}
+	
+	/*running product of the greatest perfect powers of the primes less than 20*/
+	for(i=2;i<20;i++){
+		if(primes[i]){
+			j=20;
+			power=0;
+			while(j>=i){
+				power++;
+				j/=i;
+			}
+			product *= (int) (powf((float)i,(float)power));
+		}
+	}
+	fprintf(stdout,"%d\n",product);
+	return 0;
+}

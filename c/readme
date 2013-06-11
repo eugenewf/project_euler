@@ -1,0 +1,21 @@
+project_euler
+=============
+
+my project euler answers
+
+todo:
+	question 1:
+		do a version using inclusion/exclusion of aritmetic sequences
+		add support for command line arguments and multithreading
+
+	question 2:
+		consider non-brute force answers
+
+	question 3:
+		consider non-brute force answers
+
+	question 4: 
+		figure out why it won't link when using -ansi and -Wall flags (gcc)
+
+	question 5:
+		note to self: write/find a c library to do integer math (and find out why there isn't a standard version)
