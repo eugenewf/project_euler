@@ -17,5 +17,9 @@ todo:
 	question 4: 
 		figure out why it won't link when using -ansi and -Wall flags (gcc)
 
+
 	question 5:
 		note to self: write/find a c library to do integer math (and find out why there isn't a standard version)
+
+
+
