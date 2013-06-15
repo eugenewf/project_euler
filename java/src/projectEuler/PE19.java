@@ -1,4 +1,4 @@
-package pe19;
+package projectEuler;
 
 import java.util.GregorianCalendar;
 import java.util.Locale;
@@ -21,7 +21,6 @@ public class PE19 {
 		GregorianCalendar day = new GregorianCalendar(1901,
 				GregorianCalendar.JANUARY, 1);
 		int count = 0;
-		//printDate(day);
 		while (day.get(GregorianCalendar.YEAR) < 2001) {
 			if (day.get(GregorianCalendar.DAY_OF_WEEK) == GregorianCalendar.SUNDAY
 					&& day.get(GregorianCalendar.DAY_OF_MONTH) == 1) {
@@ -32,14 +31,4 @@ public class PE19 {
 		System.out.println(count);
 	}
 
-	private static void printDate(GregorianCalendar day) {
-		System.out.println(day.getDisplayName(
-				GregorianCalendar.DAY_OF_WEEK,
-				GregorianCalendar.LONG, Locale.ENGLISH)
-				+ ", "
-				+ day.getDisplayName(GregorianCalendar.MONTH, GregorianCalendar.LONG,Locale.ENGLISH)
-				+ " "
-				+ day.get(GregorianCalendar.DAY_OF_MONTH)
-				+ ", " + day.get(GregorianCalendar.YEAR));
-	}
 }
