@@ -1,4 +1,4 @@
-package test;
+package projectEuler;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
