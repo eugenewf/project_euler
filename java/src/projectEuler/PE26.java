@@ -1,6 +1,6 @@
 package projectEuler;
 
-import java.math.BigInteger;
+import java.util.HashMap;
 
 /*
  * A unit fraction contains 1 in the numerator. The decimal representation of
@@ -36,6 +36,8 @@ public class PE26 {
 	}
 
 	/**
+	 * Turns out I took a different approach and didn't use this after all.
+	 * 
 	 * Determines whether the unit fraction formed by dividing one by the input
 	 * terminates when written in decimal notation.
 	 * 
@@ -67,22 +69,20 @@ public class PE26 {
 	 *            fraction in question.
 	 * @return Integer length of the recurring cycle, zero if the corresponding decimal representation terminates.
 	 */
-	public static int recurringCycleLength(int input){
-		if (terminates(input)){
-			return 0;
-		}
-		BigInteger multiplier = BigInteger.valueOf(9l);
-		for (int iteration = 1; ;iteration++){
+	public static int recurringCycleLength(int denominator){
+		int numerator =1;
+		int iteration =0;
+		HashMap <Integer,Integer> occurred = new HashMap<Integer,Integer>();
+		while (true){
 			if (iteration<0){
 				throw new RuntimeException("integer overflow");
 			}
-			BigInteger[] divAndRem = multiplier.divideAndRemainder(BigInteger.valueOf((long)input)); 
-			if(divAndRem[1].compareTo(BigInteger.ZERO)==0){
-				return iteration;
+			if (occurred.containsKey(numerator)){
+				return iteration - occurred.get(numerator);
 			}
-			multiplier=multiplier.multiply(BigInteger.TEN);
-			multiplier=multiplier.add(BigInteger.valueOf(9l));
+			occurred.put(numerator, iteration);
+			numerator = (numerator % denominator)*10;
+			iteration++;
 		}
-		
 	}
 }

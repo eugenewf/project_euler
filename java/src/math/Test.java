@@ -3,7 +3,8 @@ package math;
 
 public class Test {
 	public static void main(String[] args) {
-		BigRational x = new BigRational("-4","1");
-		System.out.println(x.root(2));
+		String toParse = args[0];
+		String[] div = toParse.split("[-.]");
+		System.out.println("mv "+args[0]+div[0]+"-"+div[2]+"-"+div[1]+"."+div[3]);
 	}
 }
