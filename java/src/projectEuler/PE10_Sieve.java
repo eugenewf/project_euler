@@ -17,7 +17,7 @@ public class PE10_Sieve {
 				System.out.println(i);
 				sum += (long) i;
 				if (sum < 0) {
-					System.out.println("rolover error");
+					System.out.println("rollover error");
 					return;
 				}
 				for (int j = i * i; j < 2000000; j += i) {

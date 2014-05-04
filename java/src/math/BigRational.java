@@ -2,7 +2,7 @@ package math;
 
 import java.math.BigInteger;
 
-public class BigRational implements Comparable<BigRational> {
+public class BigRational extends Number implements java.io.Serializable, Comparable<BigRational> {
 	private BigInteger num;
 	private BigInteger denom;
 
@@ -17,19 +17,23 @@ public class BigRational implements Comparable<BigRational> {
 	}
 
 	public BigRational(Integer num, Integer denom) {
-		this(num.toString(), denom.toString());
+		this(BigInteger.valueOf(num), BigInteger
+				.valueOf(denom));
 	}
 
 	public BigRational(Long num, Long denom) {
-		this(num.toString(), denom.toString());
+		this(BigInteger.valueOf(num), BigInteger
+				.valueOf(denom));
 	}
 
 	public BigRational(Integer num, Long denom) {
-		this(num.toString(), denom.toString());
+		this(BigInteger.valueOf(num), BigInteger
+				.valueOf(denom));
 	}
 
 	public BigRational(Long num, Integer denom) {
-		this(num.toString(), denom.toString());
+		this(BigInteger.valueOf(num), BigInteger
+				.valueOf(denom));
 	}
 
 	public BigRational(Integer num) {
@@ -64,6 +68,14 @@ public class BigRational implements Comparable<BigRational> {
 		return new BigRational(num.negate(), denom);
 	}
 
+	public BigRational invert() {
+		if (num.equals(BigInteger.ZERO)) {
+			throw new ArithmeticException("divide by zero");
+		} else {
+			return new BigRational(denom, num);
+		}
+	}
+
 	public int compareTo(BigRational other) {
 		return num.multiply(other.denom).compareTo(
 				other.num.multiply(denom));
@@ -73,14 +85,14 @@ public class BigRational implements Comparable<BigRational> {
 		if (compareTo(new BigRational(0)) < 0) {
 			return negate();
 		}
-		return new BigRational(num, denom);
+		return this;
 	}
 
 	public BigInteger round() {
 		BigInteger[] divAndRem = num
 				.divideAndRemainder(denom);
 		if (new BigRational(divAndRem[1], denom)
-				.compareTo(new BigRational(1, 2)) > 0) {
+				.compareTo(new BigRational(1, 2)) >= 0) {
 			divAndRem[0].add(BigInteger.ONE);
 		}
 		return divAndRem[0];
@@ -108,7 +120,7 @@ public class BigRational implements Comparable<BigRational> {
 	}
 
 	public BigRational dividedBy(BigRational other) {
-		return times(new BigRational(other.denom, other.num));
+		return times(other.invert());
 	}
 
 	public BigRational pow(int exponent) {
@@ -201,6 +213,34 @@ public class BigRational implements Comparable<BigRational> {
 		}
 		return total;
 
+	}
+
+	@Override
+	public double doubleValue() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public float floatValue() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int intValue() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public long longValue() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	public BigInteger bigIntegerValue(){
+		return num.divide(denom);
 	}
 
 }

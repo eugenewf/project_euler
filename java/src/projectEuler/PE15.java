@@ -13,7 +13,7 @@ import math.BigRational;
  */
 public class PE15 {
 	public static void main(String[] args) {
-
+		//since you make forty moves, and have to move down during twenty of them...
 		System.out.print(new BigRational(40).choose(new BigRational(20)));
 
 	}

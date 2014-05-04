@@ -1,7 +1,7 @@
 package projectEuler;
 
 import java.math.BigInteger;
-import java.util.LinkedHashSet;
+import math.Primes;
 
 /*
  * 
@@ -30,12 +30,9 @@ import java.util.LinkedHashSet;
  */
 public class PE27 {
 
-	private static LinkedHashSet <BigInteger> primeNumbers;
-	private static BigInteger maxPrime;
 	public static void main(String[] args) {
 		int a_Times_b = 0;
 		BigInteger longestSequenceLength=BigInteger.ZERO;
-		initializePrimes();
 		for(int a =-999;a<=999;a++){
 			for (int b =-999;b<=999;b++){
 				BigInteger numberOfConsecutivePrimes = consecutiveGeneratedPrimes(a, b);
@@ -52,7 +49,7 @@ public class PE27 {
 		BigInteger n = BigInteger.ZERO;
 		while(true){
 			BigInteger quadraticExpressionResult = n.pow(2).add(n.multiply(BigInteger.valueOf(a))).add(BigInteger.valueOf(b));
-			if(isPrime(quadraticExpressionResult)){
+			if(Primes.isPrime(quadraticExpressionResult)){
 				count = count.add(BigInteger.ONE);
 				n = n.add(BigInteger.ONE);
 			}else{
@@ -60,35 +57,5 @@ public class PE27 {
 			}
 		}
 			return count;
-	}
-	private static boolean isPrime(BigInteger mayBePrime){
-		if(mayBePrime.compareTo(maxPrime)>0){
-			extendPrimes(mayBePrime);
-		}
-		if(primeNumbers.contains(mayBePrime)){
-			return true;
-		}
-		return false;
-	}
-	private static void extendPrimes(BigInteger maximum){
-		
-	}
-	private static void initializePrimes(){
-		primeNumbers = new LinkedHashSet<>();
-		primeNumbers.add(BigInteger.valueOf(2));
-		primeNumbers.add(BigInteger.valueOf(3));
-		primeNumbers.add(BigInteger.valueOf(5));
-		primeNumbers.add(BigInteger.valueOf(7));
-		primeNumbers.add(BigInteger.valueOf(11));
-		primeNumbers.add(BigInteger.valueOf(13));
-		primeNumbers.add(BigInteger.valueOf(17));
-		primeNumbers.add(BigInteger.valueOf(19));
-		primeNumbers.add(BigInteger.valueOf(23));
-		primeNumbers.add(BigInteger.valueOf(29));
-		primeNumbers.add(BigInteger.valueOf(31));
-		primeNumbers.add(BigInteger.valueOf(37));
-		primeNumbers.add(BigInteger.valueOf(41));
-		primeNumbers.add(BigInteger.valueOf(43));
-		maxPrime=BigInteger.valueOf(43);		
 	}
 }
